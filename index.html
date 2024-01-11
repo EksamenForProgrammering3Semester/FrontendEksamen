@@ -15,12 +15,30 @@
 
   <!-- Custom Styles -->
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const signUpLink = document.querySelector('a[href="/signup"]');
+      
+      // Check if the 'role' attribute in localStorage is 'guest'
+      const role = localStorage.getItem('role');
+
+      // Update the content of the "Log in" link based on the role
+      if (role && role.toLowerCase() === 'guest') {
+        signUpLink.innerHTML = '<a href="/profile" data-navigo>Profile</a>';
+      } else {
+        signUpLink.innerHTML = '<a href="/signup" data-navigo>Log in</a>';
+      }
+    });
+  </script>
 </head>
 
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div id="topnav">
     <ul id="menu" class="menu-horizontal">
+      <li>
+        <img src="images\Hotel.PNG" alt="Hotel Logo" width="200px" height="100px">
+      </li>
       <li>
         <a href="/" data-navigo>Home</a>
       </li>
@@ -34,13 +52,13 @@
         <a href="/users-navigate" data-navigo>Find Users</a>
       </li>
       <li>
-        <a href="/find-user" data-navigo>Find User</a>
+        <a href="/find-hotel" data-navigo>Find Hotel</a>
       </li>
       <li>
         <a href="navigate-programatically" data-navigo>Navigate</a>
       </li>
-      <li>
-        <a href="demo1" data-navigo>Demo1</a>
+      <li id="loginLi">
+        <a href="/signup" data-navigo>Log in</a>
       </li>
       <li>
         <a href="/test" data-navigo>Test</a>

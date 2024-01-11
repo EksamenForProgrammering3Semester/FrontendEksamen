@@ -9,8 +9,8 @@ import { initNavigate } from "./pages/navigate/navigate.js"
 import { allHotels } from "./pages/allHotels/allHotels.js"
 import { initUsers } from "./pages/users-navigate/users.js"
 import { initFindHotel } from "./pages/findHotel/findHotel.js"
-import { demo1 } from "./pages/demo1/demo1.js"
-import { createHotel } from "./pages/admin/admin.js";
+import { createUserFormHandler } from "./pages/signUp/signUp.js"
+import { createHotel , createRoom} from "./pages/admin/admin.js";
 
 
 
@@ -29,9 +29,11 @@ window.addEventListener("load", async () => {
 
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
 
-  const templateDemo1 = await loadHtml("./pages/demo1/demo1.html")
+  const templateSignUp = await loadHtml("./pages/signUp/signUp.html")
 
   const templatetest = await loadHtml("./pages/test/test.html")
+
+  const templateprofile = await loadHtml("./pages/profile/profile.html")
   
 
   
@@ -60,6 +62,7 @@ window.addEventListener("load", async () => {
      "/admin": () => {
       renderHtml(templateAdmin, "content");
       createHotel()
+      createRoom()
     },    
 
       "/allHotels": () => {
@@ -70,7 +73,7 @@ window.addEventListener("load", async () => {
         renderHtml(templateUsersNavigate, "content")
         initUsers()
       },
-      "/find-user": (match) => {
+      "/find-hotel": (match) => {
         renderHtml(templateFindHotel, "content")
         initFindHotel(match)
       },
@@ -79,13 +82,18 @@ window.addEventListener("load", async () => {
         renderHtml(templateNavigate, "content")
         initNavigate()
       },
-      "/demo1": (match) => {
-        renderHtml(templateDemo1, "content")
-        demo1()
+      "/signup": () => {
+        renderHtml(templateSignUp, "content")
+          createUserFormHandler();
+      
       },
       "/test": (match) => {
         renderHtml(templatetest, "content")
-        demo1()
+        //demo1()
+      },
+      "/profile": (match) => {
+        renderHtml(templateprofile, "content")
+        //demo1()
       }
     })
     .notFound(() => {
