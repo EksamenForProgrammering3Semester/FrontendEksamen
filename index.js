@@ -6,22 +6,31 @@ import {
 } from "./utils.js"
 
 import { initNavigate } from "./pages/navigate/navigate.js"
-import { initUsersModal } from "./pages/users-modal/users-modal.js"
+import { allHotels } from "./pages/allHotels/allHotels.js"
 import { initUsers } from "./pages/users-navigate/users.js"
-import { initFindUser } from "./pages/findUser/findUser.js"
+import { initFindHotel } from "./pages/findHotel/findHotel.js"
 import { demo1 } from "./pages/demo1/demo1.js"
-import { createHotel } from "./pages/admin/admins.js"
+import { createHotel } from "./pages/admin/admin.js";
+
 
 
 window.addEventListener("load", async () => {
 
   const templateAdmin = await loadHtml("./pages/admin/admin.html")
-  const templateUsersModal = await loadHtml("./pages/users-modal/users-modal.html")
+
+
+  const templateUsersModal = await loadHtml("./pages/allHotels/allHotels.html")
+
   const templateUsersNavigate = await loadHtml("./pages/users-navigate/users.html")
-  const templateFindUser = await loadHtml("./pages/findUser/findUser.html")
+
+  const templateFindHotel = await loadHtml("./pages/findHotel/findHotel.html")
+
   const templateNavigate = await loadHtml("./pages/navigate/navigate.html")
+
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
+
   const templateDemo1 = await loadHtml("./pages/demo1/demo1.html")
+
   const templatetest = await loadHtml("./pages/test/test.html")
   
 
@@ -48,22 +57,22 @@ window.addEventListener("load", async () => {
       and not in a separate file.
       </p>
      `,
-      "/admin": () => 
-      renderHtml(templateAdmin, "content")
+     "/admin": () => {
+      renderHtml(templateAdmin, "content");
       createHotel()
-      ,
+    },    
 
-      "/users-modal": () => {
+      "/allHotels": () => {
         renderHtml(templateUsersModal, "content")
-        initUsersModal()
+        allHotels()
       },
       "/users-navigate": () => {
         renderHtml(templateUsersNavigate, "content")
         initUsers()
       },
       "/find-user": (match) => {
-        renderHtml(templateFindUser, "content")
-        initFindUser(match)
+        renderHtml(templateFindHotel, "content")
+        initFindHotel(match)
       },
 
       "/navigate-programatically": () => {
