@@ -13,25 +13,8 @@
 
   <script src="index.js" type="module"></script>
 
-  <!-- Custom Styles -->
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const signUpLink = document.querySelector('a[href="/signup"]');
-      
-      // Check if the 'role' attribute in localStorage is 'guest'
-      const role = localStorage.getItem('role');
-
-      // Update the content of the "Log in" link based on the role
-      if (role && role.toLowerCase() === 'guest') {
-        signUpLink.innerHTML = '<a href="/profile" data-navigo>Profile</a>';
-      } else {
-        signUpLink.innerHTML = '<a href="/signup" data-navigo>Log in</a>';
-      }
-    });
-  </script>
+  
 </head>
-
 <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div id="topnav">
@@ -57,11 +40,14 @@
       <li>
         <a href="navigate-programatically" data-navigo>Navigate</a>
       </li>
-      <li id="loginLi">
+      <li>
         <a href="/signup" data-navigo>Log in</a>
       </li>
       <li>
-        <a href="/test" data-navigo>Test</a>
+        <a href="/test" data-navigo>Create reservation</a>
+      </li>
+      <li>
+        <a href="/reservation" data-navigo>view reservation</a>
       </li>
     </ul>
   </div>

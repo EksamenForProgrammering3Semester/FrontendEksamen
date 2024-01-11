@@ -1,0 +1,25 @@
+<div class="template">
+    <h1>Reservation Table</h1>
+    
+    <label for="deleteId">Enter Reservation ID to Delete:</label>
+    <input type="text" id="deleteId" placeholder="Enter ID">
+    <button onclick="deleteReservation()">Delete Reservation</button>
+
+    <table id="reservationTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Room Number</th>
+                <th>Number of Beds</th>
+                <th>Hotel Name</th>
+                <th>Guest Username</th>
+                <th>Reservation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Reservation data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script src="app.js"></script>
+</div>

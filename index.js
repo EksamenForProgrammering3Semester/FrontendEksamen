@@ -11,6 +11,8 @@ import { initUsers } from "./pages/users-navigate/users.js"
 import { initFindHotel } from "./pages/findHotel/findHotel.js"
 import { createUserFormHandler } from "./pages/signUp/signUp.js"
 import { createHotel , createRoom} from "./pages/admin/admin.js";
+import {fetchGuestDetailsAndUpdateUI} from "./pages/profile/profile.js"
+import {populateReservationTable} from "./pages/reservations-info/reservations.js"
 
 
 
@@ -34,6 +36,9 @@ window.addEventListener("load", async () => {
   const templatetest = await loadHtml("./pages/test/test.html")
 
   const templateprofile = await loadHtml("./pages/profile/profile.html")
+
+  const templatereservations = await loadHtml("./pages/reservations-info/reservations.html")
+
   
 
   
@@ -93,7 +98,12 @@ window.addEventListener("load", async () => {
       },
       "/profile": (match) => {
         renderHtml(templateprofile, "content")
-        //demo1()
+        fetchGuestDetailsAndUpdateUI()
+      },
+      "/reservation": () => {
+        renderHtml(templatereservations, "content")
+        populateReservationTable()
+
       }
     })
     .notFound(() => {

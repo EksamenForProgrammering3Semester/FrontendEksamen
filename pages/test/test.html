@@ -1,5 +1,83 @@
 
 <div class="template">
-    <h1>Hva så</h1>
+    <h1>Create Reservation</h1>
+
+    <form id="reservationForm">
+        <label for="room">Room ID:</label>
+        <input type="text" id="room" name="room" required>
+
+        <label for="reservationDate">Reservation Date:</label>
+        <input type="datetime-local" id="reservationDate" name="reservationDate" required>
+
+        <!-- Guest ID will be automatically set in app.js -->
+        <input type="hidden" id="guest" name="guest">
+
+        <button type="submit">Create Reservation</button>
+    </form>
+
+    <div id="successMessage" style="color: green; margin-top: 10px;"></div>
+    <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
+
+
+
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
+    // Automatically set the guest ID from localStorage
+    document.getElementById("guest").value = localStorage.getItem("id");
+
+    // Add a submit event listener to the form
+    document.getElementById("reservationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Call the createReservation function when the form is submitted
+        createReservation();
+    });
+});
+
+function createReservation() {
+    // Get input values
+    const room = document.getElementById("room").value;
+    const reservationDate = document.getElementById("reservationDate").value;
+
+    // Guest ID is automatically retrieved from localStorage
+    const guest = localStorage.getItem("id");
+
+    // Create the payload
+    const payload = {
+        "room": room,
+        "guest": guest,
+        "reservationDate": reservationDate
+        // Additional fields specific to your ReservationRequest class
+    };
+
+    // Make a POST request using fetch
+    fetch("http://localhost:8080/reservations/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display success message
+        document.getElementById("successMessage").innerText = "Reservation created successfully!";
+        document.getElementById("errorMessage").innerText = ""; // Clear error message
+
+        console.log("Reservation created:", data);
+        // Handle the response as needed
+    })
+    .catch(error => {
+        // Display error message
+        document.getElementById("errorMessage").innerText = "Error creating reservation. Please try again.";
+        document.getElementById("successMessage").innerText = ""; // Clear success message
+
+        console.error("Error creating reservation:", error);
+        // Handle errors
+    });
+}
+
+
+    </script>
 </div>
 
