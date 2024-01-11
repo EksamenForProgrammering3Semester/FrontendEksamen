@@ -1,0 +1,31 @@
+/* custom-styles.css */
+
+.custom-navbar {
+    background-color: #333; /* Customize the background color */
+    padding: 10px;
+  }
+  
+  .custom-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .custom-menu li {
+    margin-right: 20px;
+  }
+  
+  .custom-menu a {
+    color: white; /* Customize the text color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .custom-content {
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid black; /* Add a border around the content */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+  }
+  

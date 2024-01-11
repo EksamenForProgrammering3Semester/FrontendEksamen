@@ -3,13 +3,15 @@ import { sanitizeStringWithTableRows } from "../../utils.js"
 
 
 export function initUsersModal() {
-  document.getElementById("tbl-body").onclick = showUserDetails
-  getAllUsers()
+  document.getElementById("tryk").onclick = function(){
+    document.getElementById("aymi").innerHTML="Hejsa YASIN"
+  }
+ 
 }
 
 export async function getAllUsers() {
   try {
-    const usersFromServer = await fetch(URL).then(res => res.json())
+    const usersFromServer = await fetch(URL).then(resu => resu.json())
     showAllData(usersFromServer)
   }
   catch (err) {

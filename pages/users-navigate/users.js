@@ -5,7 +5,6 @@ import { sanitizeStringWithTableRows } from "../../utils.js"
 let usersFromServer = []
 
 export function initUsers() {
-  document.getElementById("tbl-body").onclick = showUserDetails
   getAndRenderUsers()
 }
 
@@ -29,18 +28,8 @@ function renderAllData(data) {
     <td>${user.address.street} </td>  
     <td>${user.address.city} </td>
     <td>
-    <button id="row-btn_${user.id}"  type="button"  class="btn btn-sm btn-secondary">Details</button> </td>      
+   </td>      
   </tr>`)
   const tableRowsString = tableRowsArray.join("\n")
   document.getElementById("tbl-body").innerHTML = sanitizeStringWithTableRows(tableRowsString)
-}
-
-async function showUserDetails(evt) {
-  const target = evt.target
-  if (!target.id.startsWith("row-btn_")) {
-    return
-  }
-  const id = target.id.replace("row-btn_", "")
-  // @ts-ignore
-  window.router.navigate("find-user?id=" + id)
 }
