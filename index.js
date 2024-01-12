@@ -17,6 +17,7 @@ import {createReservation} from "./pages/test/test.js"
 import {setupHotelButtons} from"./pages/specific-hotels/specific-hotels.js"
 import {HotelRooms} from"./pages/HotelRooms/HotelRooms.js"
 import {roominfo} from "./pages/roominfo/roominfo.js"
+import {handleAvailabilityCheck} from "./pages/availableRooms/availableRooms.js"
 
 
 
@@ -51,6 +52,7 @@ window.addEventListener("load", async () => {
 
   const templateroominfo = await loadHtml("./pages/roominfo/roominfo.html")
 
+  const templateavailableRooms = await loadHtml("./pages/availableRooms/availableRooms.html")
 
 
 
@@ -138,6 +140,12 @@ window.addEventListener("load", async () => {
       "/findRooms": () => {
        renderHtml(templateroominfo, "content")
        roominfo()
+        
+      }
+      ,
+      "/findAvailableRooms": () => {
+       renderHtml(templateavailableRooms, "content")
+      handleAvailabilityCheck()
         
       }
     })
