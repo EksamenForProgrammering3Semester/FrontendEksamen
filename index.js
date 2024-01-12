@@ -16,6 +16,7 @@ import {populateReservationTable, deleteReservation} from "./pages/reservations-
 import {createReservation} from "./pages/test/test.js"
 import {setupHotelButtons} from"./pages/specific-hotels/specific-hotels.js"
 import {HotelRooms} from"./pages/HotelRooms/HotelRooms.js"
+import {roominfo} from "./pages/roominfo/roominfo.js"
 
 
 
@@ -48,6 +49,9 @@ window.addEventListener("load", async () => {
 
   const templateHotelRooms = await loadHtml("./pages/HotelRooms/HotelRooms.html")
 
+  const templateroominfo = await loadHtml("./pages/roominfo/roominfo.html")
+
+
 
 
 
@@ -72,9 +76,8 @@ window.addEventListener("load", async () => {
       "/": () => document.getElementById("content").innerHTML =
         `<h2>Home</h2>
       <p style='margin-top:2em'>
-      This is the content of the Home Route <br/>
-      Observe that since this is so simple  all HTML is added in the on-handler for the route. 
-      and not in a separate file.
+      This is the content of the the hotel app <br/>
+      it displays all the features of the hotel system. 
       </p>
      `,
      "/admin": () => {
@@ -131,6 +134,10 @@ window.addEventListener("load", async () => {
         renderHtml(templateHotelRooms, "content")
         HotelRooms()
         
+      } ,
+      "/findRooms": () => {
+       renderHtml(templateroominfo, "content")
+       roominfo()
         
       }
     })
