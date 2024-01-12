@@ -14,6 +14,9 @@ import { createHotel , createRoom} from "./pages/admin/admin.js";
 import {fetchGuestDetailsAndUpdateUI} from "./pages/profile/profile.js"
 import {populateReservationTable, deleteReservation} from "./pages/reservations-info/reservations.js"
 import {createReservation} from "./pages/test/test.js"
+import {setupHotelButtons} from"./pages/specific-hotels/specific-hotels.js"
+import {HotelRooms} from"./pages/HotelRooms/HotelRooms.js"
+
 
 
 
@@ -40,6 +43,14 @@ window.addEventListener("load", async () => {
   const templateprofile = await loadHtml("./pages/profile/profile.html")
 
   const templatereservations = await loadHtml("./pages/reservations-info/reservations.html")
+
+  const templatespecifichotels = await loadHtml("./pages/specific-hotels/specific-hotels.html")
+
+  const templateHotelRooms = await loadHtml("./pages/HotelRooms/HotelRooms.html")
+
+
+
+
 
   
 
@@ -108,6 +119,19 @@ window.addEventListener("load", async () => {
         populateReservationTable()
         deleteReservation()
       
+      }
+      ,
+      "/specific-hotels": () => {
+        renderHtml(templatespecifichotels, "content")
+        setupHotelButtons()
+        
+      }
+      ,
+      "/HotelRooms": () => {
+        renderHtml(templateHotelRooms, "content")
+        HotelRooms()
+        
+        
       }
     })
     .notFound(() => {

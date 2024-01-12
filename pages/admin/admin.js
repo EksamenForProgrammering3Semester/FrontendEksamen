@@ -7,9 +7,13 @@ export function createHotel() {
   // Find the button and attach a click event listener
   var createHotelButton = document.getElementById('createHotelButton');
 
-  createHotelButton.addEventListener('click', function() {
+  // Function to handle the click event
+  function handleClick() {
     // Disable the button to prevent multiple clicks
     createHotelButton.disabled = true;
+
+    // Remove the event listener to prevent further clicks
+    createHotelButton.removeEventListener('click', handleClick);
 
     // Get values from the form fields
     var name = document.getElementById('name').value;
@@ -55,8 +59,12 @@ export function createHotel() {
       // Re-enable the button after the process is complete
       createHotelButton.disabled = false;
     });
-  });
+  }
+
+  // Attach the click event listener
+  createHotelButton.addEventListener('click', handleClick);
 }
+
 
 
 export function createRoom() {

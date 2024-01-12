@@ -1,0 +1,65 @@
+<style>
+    .template {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px; /* Add padding for more space */
+        text-align: left;
+    }
+
+    th {
+        background-color: #3498db;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="template">
+    <button id="familyHouseButton" class="button">Family House</button>
+    <button id="oceanViewButton" class="button">Ocean View</button>
+    <button id="nearCityButton" class="button">Near the City</button>
+
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>ZIP</th>
+                <th>Country</th>
+                <th>Hotel Type</th>
+            </tr>
+        </thead>
+        <tbody id="resultBody">
+            <!-- Results will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
