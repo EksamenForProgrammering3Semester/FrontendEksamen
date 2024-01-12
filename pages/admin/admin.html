@@ -22,19 +22,26 @@
   </form>
   <h2 id="verifier"></h2>
 
-  <h2>Create Room</h2>
-  <form id="createRoomForm">
-    <label for="roomNumber">Room Number:</label>
-    <input type="text" id="roomNumber" name="roomNumber" required>
+  <div>
+    <h2>Create Room</h2>
+    <form id="createRoomForm">
+      <label for="roomNumber">Room Number:</label>
+      <input type="text" id="roomNumber" name="roomNumber" required>
+  
+      <label for="numberOfBeds">Number of Beds:</label>
+      <input type="text" id="numberOfBeds" name="numberOfBeds" required>
+  
+      <label for="hotelId">Hotel ID:</label>
+      <input type="text" id="hotelId" name="hotelId" required>
+  
+      <label for="pricePerDay">Price Per Day:</label>
+      <input type="text" id="pricePerDay" name="pricePerDay" required>
+  
+      <button type="button" id="createRoomButton">Create Room</button>
+    </form>
+  
+    <h2 id="roomVerifier"></h2>
+  </div>
+  
 
-    <label for="numberOfBeds">Number of Beds:</label>
-    <input type="text" id="numberOfBeds" name="numberOfBeds" required>
 
-    <label for="hotelId">Hotel ID:</label>
-    <input type="text" id="hotelId" name="hotelId" required>
-
-    <button type="button" id="createRoomButton">Create Room</button>
-  </form>
-
-  <h2 id="roomVerifier"></h2>
-</div>

@@ -3,9 +3,14 @@
 // Import necessary functions or objects if needed
 // import { renderHtml, loadHtml } from "./utils.js";
 
- export function createHotel() {
+export function createHotel() {
   // Find the button and attach a click event listener
-  document.getElementById('createHotelButton').addEventListener('click', function() {
+  var createHotelButton = document.getElementById('createHotelButton');
+
+  createHotelButton.addEventListener('click', function() {
+    // Disable the button to prevent multiple clicks
+    createHotelButton.disabled = true;
+
     // Get values from the form fields
     var name = document.getElementById('name').value;
     var street = document.getElementById('street').value;
@@ -45,9 +50,14 @@
     })
     .catch(error => {
       console.error('Error creating hotel:', error);
+    })
+    .finally(() => {
+      // Re-enable the button after the process is complete
+      createHotelButton.disabled = false;
     });
   });
 }
+
 
 export function createRoom() {
   // Find the button and attach a click event listener
@@ -56,12 +66,14 @@ export function createRoom() {
     var roomNumber = document.getElementById('roomNumber').value;
     var numberOfBeds = document.getElementById('numberOfBeds').value;
     var hotelId = document.getElementById('hotelId').value;
+    var pricePerDay = document.getElementById('pricePerDay').value; // Added line
 
     // Create a room request object with the form data
     var roomRequest = {
       roomNumber: roomNumber,
       numberOfBeds: numberOfBeds,
-      hotelId: hotelId
+      hotelId: hotelId,
+      pricePerDay: pricePerDay, // Added line
     };
 
     // Make a POST request to the server
@@ -81,7 +93,8 @@ export function createRoom() {
       document.getElementById('roomVerifier').innerText = 'Room created with the following details:\n' +
         'Room Number: ' + data.roomNumber + '\n' +
         'Number of Beds: ' + data.numberOfBeds + '\n' +
-        'Hotel ID: ' + data.hotelId;
+        'Hotel ID: ' + hotelId + '\n' +
+        'Price Per Day: ' + data.pricePerDay; // Updated line
     })
     .catch(error => {
       console.error('Error creating room:', error);

@@ -1,5 +1,3 @@
-// app.js
-
 export async function populateReservationTable() {
     try {
         // Fetch data from the API endpoint
@@ -41,38 +39,60 @@ export async function populateReservationTable() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-
-    
 }
 
-export async function deleteReservation() {
-    const deleteIdInput = document.getElementById('deleteId');
-    const reservationId = deleteIdInput.value;
+// ./pages/test/test.js
 
-    try {
-        // Perform the deletion by calling your API endpoint
-        await fetch(`http://localhost:8080/api/reservations/${reservationId}`, {
-            method: 'DELETE',
-        });
+// Function to delete a reservation
+// ./pages/test/test.js
 
-        // Refresh the reservation table after deletion
-        populateReservationTable();
+// Function to delete a reservation
+// ./pages/test/test.js
 
-        // Clear the input field
-        deleteIdInput.value = '';
-    } catch (error) {
-        console.error('Error deleting reservation:', error);
-    }
+// Function to delete a reservation
+// ./pages/test/test.js
+
+// Function to delete a reservation
+// ./pages/test/test.js
+
+export function deleteReservation() {
+    const deleteButton = document.getElementById("deleteReservationButton");
+    const reservationIdInput = document.getElementById("reservationIdInput");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
+
+    deleteButton.addEventListener("click", async () => {
+        const reservationIdToDelete = reservationIdInput.value.trim();
+
+        if (reservationIdToDelete) {
+            try {
+                const response = await fetch(`http://localhost:8080/reservations/${reservationIdToDelete}`, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                });
+                populateReservationTable()
+
+                if (!response.ok) {
+                    throw new Error(`Failed to delete reservation with ID ${reservationIdToDelete}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+             
+            } catch (error) {
+              
+            }
+        } else {
+            errorMessage.innerText = "Please enter a valid Reservation ID";
+            successMessage.innerText = "";
+        }
+    });
 }
 
-// Add an event listener to call deleteReservation when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Add click event listener to the delete button
-    document.getElementById('deleteButton').addEventListener('click', deleteReservation);
-
-    // Initial population of the reservation table
-    populateReservationTable();
-});
 
 
+// Example usage:
+
+
+// Set up event listener in JavaScript
 

@@ -12,7 +12,9 @@ import { initFindHotel } from "./pages/findHotel/findHotel.js"
 import { createUserFormHandler } from "./pages/signUp/signUp.js"
 import { createHotel , createRoom} from "./pages/admin/admin.js";
 import {fetchGuestDetailsAndUpdateUI} from "./pages/profile/profile.js"
-import {populateReservationTable} from "./pages/reservations-info/reservations.js"
+import {populateReservationTable, deleteReservation} from "./pages/reservations-info/reservations.js"
+import {createReservation} from "./pages/test/test.js"
+
 
 
 
@@ -94,7 +96,8 @@ window.addEventListener("load", async () => {
       },
       "/test": (match) => {
         renderHtml(templatetest, "content")
-        //demo1()
+
+        createReservation()
       },
       "/profile": (match) => {
         renderHtml(templateprofile, "content")
@@ -103,7 +106,8 @@ window.addEventListener("load", async () => {
       "/reservation": () => {
         renderHtml(templatereservations, "content")
         populateReservationTable()
-
+        deleteReservation()
+      
       }
     })
     .notFound(() => {

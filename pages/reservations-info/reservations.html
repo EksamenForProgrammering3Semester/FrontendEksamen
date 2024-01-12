@@ -1,9 +1,14 @@
 <div class="template">
     <h1>Reservation Table</h1>
-    
-    <label for="deleteId">Enter Reservation ID to Delete:</label>
-    <input type="text" id="deleteId" placeholder="Enter ID">
-    <button onclick="deleteReservation()">Delete Reservation</button>
+    <h1>Delete Reservation</h1>
+
+    <label for="reservationIdInput">Reservation ID:</label>
+    <input type="text" id="reservationIdInput" placeholder="Enter Reservation ID" required>
+
+    <button id="deleteReservationButton">Delete Reservation</button>
+
+    <div id="successMessage" style="color: green; margin-top: 10px;"></div>
+    <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
 
     <table id="reservationTable">
         <thead>
@@ -21,5 +26,5 @@
         </tbody>
     </table>
 
-    <script src="app.js"></script>
+
 </div>
