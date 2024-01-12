@@ -1,22 +1,17 @@
 <div class="template">
-    <h1>Room List</h1>
+    <body>
+        <h1>Room List</h1>
+        <form id="hotelForm">
+            <label for="hotelId">Enter Hotel ID: </label>
+            <input type="number" id="hotelId" required>
+            <button type="submit">Get Room List</button>
+        </form>
+    
+        <div id="roomList"></div>
+    
+    </body>
 
-    <!-- Input for Hotel ID -->
-    <label for="hotel-id-input">Enter Hotel ID: </label>
-    <input type="text" id="hotel-id-input" placeholder="Hotel ID">
-    <button id="btn-fetch-hotel">Get Hotel</button>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Room Number</th>
-                <th>Number of Beds</th>
-                <th>Price per Day</th>
-            </tr>
-        </thead>
-        <tbody id="roomListTableBody"></tbody>
-    </table>
-
-    <!-- Call the initHotelRooms function to initialize the logic -->
+   
     
 </div>
